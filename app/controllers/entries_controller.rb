@@ -18,7 +18,7 @@ class EntriesController < ApplicationController
     @entry.uploaded_image.attach(params["uploaded_image"])
 
     @entry.save
-    redirect_to "/places/#{@entry["place_id"]}"
+    redirect_to "/places/#{@entry["place_id"]}", status: :see_other
   end
 
 end

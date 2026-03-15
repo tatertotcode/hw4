@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         # 3. If they know their password, log them in!
         # We use the session hash to store the user's ID in a browser cookie
         session["user_id"] = @user["id"]
-        redirect_to "/places"
+        redirect_to "/places", status: :see_other
       else
         # Password was incorrect
         redirect_to "/sessions/new"
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   def destroy
     # Log out the user by clearing the cookie
     session["user_id"] = nil
-    redirect_to "/sessions/new"
+    redirect_to "/sessions/new", status: :see_other
   end
 end
   

@@ -10,6 +10,6 @@ class UsersController < ApplicationController
     # enrcrypt password using BCrypt
     @user["password"] = BCrypt::Password.create(params["password"])
     @user.save
-    redirect_to "/"
+    redirect_to "/", status: :see_other
   end
 end

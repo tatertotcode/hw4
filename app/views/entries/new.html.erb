@@ -1,7 +1,6 @@
 <h1 class="mb-4">New Entry for <%= @place.name %></h1>
 
-<form action="/entries" method="post" enctype="multipart/form-data" class="mb-4">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<form action="/entries" method="post" enctype="multipart/form-data" class="mb-4" data-turbo="false">  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="place_id" value="<%= @place.id %>">
 
   <div class="mb-3">

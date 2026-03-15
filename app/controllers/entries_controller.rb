@@ -14,6 +14,9 @@ class EntriesController < ApplicationController
     # Assign the logged-in user's ID to the entry
     @entry["user_id"] = @current_user["id"]
 
+    # attach the file from the form parameters
+    @entry.uploaded_image.attach(params["uploaded_image"])
+
     @entry.save
     redirect_to "/places/#{@entry["place_id"]}"
   end

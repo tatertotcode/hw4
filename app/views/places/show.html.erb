@@ -1,8 +1,10 @@
 <h1 class="mb-2"><%= @place.name %></h1>
 
-<p class="mb-4">
-  <a href="/entries/new?place_id=<%= @place.id %>" class="btn btn-success">New Entry</a>
-</p>
+<% if @current_user %>
+  <p class="mb-4">
+    <a href="/entries/new?place_id=<%= @place.id %>" class="btn btn-success">New Entry</a>
+  </p>
+<% end %>
 
 <div class="row">
   <% for entry in @entries %>
@@ -12,6 +14,10 @@
         <div class="card-body">
           <h5 class="card-title"><%= entry.title %></h5>
           <h6 class="card-subtitle mb-3 text-muted"><%= entry.occurred_on %></h6>
+        <% if entry.uploaded_image.attached? %>
+          <img src="<%= url_for(entry.uploaded_image) %>" class="img-fluid mb-3 rounded">
+        <% end %>
+
           <p class="card-text"><%= entry.description %></p>
         </div>
       </div>
